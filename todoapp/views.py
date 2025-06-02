@@ -27,3 +27,13 @@ def loginn(request):
         else:
             return render('/loginn')
     return render(request, 'loginn.html')
+def todo(request):
+    if request.method == 'POST':
+        todo = request.POST.get('todo')
+        print(todo)
+        todo_obj = TODOO.objects.create(todo=todo, user=request.user)
+        todo_obj.save()
+        return redirect('/todo')
+    
+    todos = TODOO.objects.filter(user=request.user)
+    return render(request, 'todo.html', {'todos': todos})
