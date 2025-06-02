@@ -1,5 +1,6 @@
 from django.contrib import admin
 from todoapp.models import TODOO
-admin
+
+admin.site.register(TODOO)
 
 # Register your models here.
